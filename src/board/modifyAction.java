@@ -24,7 +24,7 @@ public class modifyAction extends ActionSupport implements Preparable,ModelDrive
 	private File upload; //파일 객체
 	private String uploadContentType; //컨텐츠 타입
 	private String uploadFileName; //파일 이름
-	private String fileUploadPath = "E:\\save\\"; //업로드 경로.
+	private String fileUploadPath = "C:\\save\\"; //업로드 경로.
 
 	// 게시글 수정
 	public String execute() throws Exception {

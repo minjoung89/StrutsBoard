@@ -11,7 +11,7 @@ public class deleteAction extends ActionSupport implements Preparable,ModelDrive
 	private SqlMapClient sqlMapper;
 	private boardVO paramClass; //파라미터를 저장할 객체
 	private int currentPage;	//현재 페이지
-	private String fileUploadPath = "E:\\save\\";
+	private String fileUploadPath = "C:\\save\\";
 
 
 	// 게시글 글 삭제

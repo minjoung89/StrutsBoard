@@ -25,8 +25,10 @@
 		</action>
 		
 		<!-- 게시판 쓰기 액션. -->
-		<action name="writeForm" class="board.writeAction" method="form">
-			<interceptor-ref name="base"/>
+		<action name="writeForm" class="board.writeForm">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
 			<result>/board/boardWrite.jsp</result>
 		</action>
 		
@@ -46,7 +48,7 @@
 		
 		
 		<!-- 파일 다운로드 액션. -->
-		<action name="fileDownloadAction" class="board.viewAction" method="download">
+		<action name="fileDownloadAction" class="board.fileDownloadAction">
 				<interceptor-ref name="base"/>
     			<result name="success" type="stream">
               		  		<param name="contentType">binary/octet-stream</param>
@@ -58,7 +60,7 @@
    		 </action>
 		
 		<!-- 비밀번호 체크 액션. -->
-		<action name="checkForm" class="board.checkFormAction">
+		<action name="checkForm" class="board.checkForm">
 			<interceptor-ref name="base"/>
 			<result>/board/checkPassword.jsp</result>
 		</action>
@@ -70,7 +72,7 @@
 		</action>
 		
 		<!-- 게시판 수정 액션. -->
-		<action name="modifyForm" class="board.viewAction">
+		<action name="modifyForm" class="board.modifyForm">
 			<interceptor-ref name="base"/>
 			<result type="chain">writeForm</result>
 		</action>

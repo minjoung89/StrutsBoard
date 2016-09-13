@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class checkFormAction  extends ActionSupport implements Preparable,ModelDriven{
+public class checkForm  extends ActionSupport implements Preparable,ModelDriven{
 	boardVO paramClass;
 	int currentPage;
 	public String execute() throws Exception {

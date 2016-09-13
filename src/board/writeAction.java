@@ -16,8 +16,7 @@ import org.apache.commons.io.FileUtils;
 
 public class writeAction extends ActionSupport implements Preparable,ModelDriven,DAOSqlMapper{
 
-	public static Reader reader; //파일 스트림을 위한 reader.
-	public static SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
+	private SqlMapClient sqlMapper; //SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
 	private boardVO paramClass; //파라미터를 저장할 객체
 	private int currentPage; //현재 페이지
@@ -27,7 +26,7 @@ public class writeAction extends ActionSupport implements Preparable,ModelDriven
 	private File upload; //파일 객체
 	private String uploadContentType; //컨텐츠 타입
 	private String uploadFileName; //파일 이름
-	private String fileUploadPath = "E:\\save\\"; //업로드 경로.
+	private String fileUploadPath = "C:\\save\\"; //업로드 경로.
 
 	public String form() throws Exception {
 		System.out.println("writeAction form()");
