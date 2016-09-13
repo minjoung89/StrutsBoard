@@ -31,14 +31,13 @@ public class writeAction extends ActionSupport implements Preparable,ModelDriven
 
 	public String form() throws Exception {
 		System.out.println("writeAction form()");
-		System.out.println(paramClass);
 		//등록 폼.
 		return SUCCESS;
 	}
 
 	// 게시판 WRITE 액션
 	public String execute() throws Exception {
-
+		System.out.println("writeAction execute()");
 		// 등록 쿼리 수행.
 		sqlMapper.insert("insertBoard", paramClass);
 
@@ -70,9 +69,8 @@ public class writeAction extends ActionSupport implements Preparable,ModelDriven
 		return SUCCESS;
 	}
 
-	public void prepare() throws Exception { System.out.println("prepare");	paramClass = new boardVO();	}
-	public Object getModel() {	System.out.println("getModel");return paramClass; 	}
-	
+	public void prepare() throws Exception { paramClass = new boardVO();	}
+	public Object getModel() {	System.out.println("getModel"); return paramClass; 	}
 	public void setUpload(File upload) {	this.upload = upload;	}
 	public void setUploadContentType(String uploadContentType) {	this.uploadContentType = uploadContentType;	}
 	public void setUploadFileName(String uploadFileName) {	this.uploadFileName = uploadFileName;	}

@@ -16,7 +16,7 @@ public class deleteAction extends ActionSupport implements Preparable,ModelDrive
 
 	// 게시글 글 삭제
 	public String execute() throws Exception {
-		
+		System.out.println("deleteAction execute()");
 		// 해당 번호의 글을 가져온다.
 		paramClass = (boardVO) sqlMapper.queryForObject("selectOne", paramClass.getNo());
 
@@ -33,7 +33,7 @@ public class deleteAction extends ActionSupport implements Preparable,ModelDrive
 	public int getCurrentPage() {	return currentPage;	}
 	public void setCurrentPage(int currentPage) {	this.currentPage = currentPage;	}
 	public void setSqlMapper(SqlMapClient sqlMapper) {		this.sqlMapper=sqlMapper;	}
-	public Object getModel() {		return paramClass;	}
+	public Object getModel() {	System.out.println("getModel");	return paramClass;	}
 	public void prepare() throws Exception { paramClass=new boardVO();	}
 }
 

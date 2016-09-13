@@ -17,8 +17,7 @@
   		<tr>
   			<td height="20"></td>
   		</tr>
-  	</table>
-  	
+  	</table>  	
   
 	<table width="600" border="0" cellspacing="0" cellpadding="2">
 	      <tr align="center" bgcolor="#F3F3F3">
@@ -32,22 +31,22 @@
         		<td height="1" colspan="5"></td>
       	      </tr>
 
-	      <s:iterator value="list" status="stat">
+	    <s:iterator value="list" status="stat">    <!-- 반복문(list안의 레코드를 하나씩 꺼냄) -->
 
-		<s:url id="viewURL" action="viewAction" >
-			<s:param name="no">
-				<s:property value="no" />
-			</s:param>
-			<s:param name="currentPage">
-				<s:property value="currentPage" />
-			</s:param>
-		</s:url>
+			 <s:url id="viewURL" action="viewAction" >  <!-- viewAction으로 가는 url을 생성함 -->
+				<s:param name="no">					<!-- 파라미터 no 생성하여 현재 레코드의 no값 설정 -->
+					<s:property value="no" />
+				</s:param>
+				<s:param name="currentPage">		<!-- 파라미터 currentPage 생성하여 listAction에서 넘겨받은 currentPage값 설정 -->
+					<s:property value="currentPage" />
+				</s:param>
+		    </s:url>
 			
      	      <tr bgcolor="#FFFFFF"  align="center">
         		<td><s:property value="no" /></td>
-        		<td align="left"> &nbsp;<s:a href="%{viewURL}"><s:property value="subject" /></s:a></td>
+        		<td align="left"> &nbsp;<s:a href="%{viewURL}"><s:property value="subject" /></s:a></td>   <!-- viewURL 내용에 맞게 페이지 이동 -->
         		<td align="center"><s:property value="name" /></td>
-		<td align="center"><s:property value="regdate" /></td>
+				<td align="center"><s:property value="regdate" /></td>
         		<td><s:property value="readhit" /></td>
       	      </tr>
       	      <tr bgcolor="#777777">
@@ -75,7 +74,7 @@
     		<td colspan="5">
     		<input type="button" value="글쓰기" class="inputb" onClick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage" />';">
 		</td>
-    	       </tr>
+    </tr>
 	</table>
    </body>
 </html>

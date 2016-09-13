@@ -1,7 +1,6 @@
 package board;
 
 public class pagingAction {
-
 	private int currentPage;   // 현재페이지
 	private int totalCount;	 // 전체 게시물 수
 	private int totalPage;	 // 전체 페이지 수
@@ -11,28 +10,21 @@ public class pagingAction {
 	private int endCount;	 // 한 페이지에서 보여줄 게시글의 끝 번호
 	private int startPage;	 // 시작 페이지
 	private int endPage;	 // 마지막 페이지
-
 	private StringBuffer pagingHtml;
 
 	// 페이징 생성자
-	public pagingAction(int currentPage, int totalCount, int blockCount,
-			int blockPage) {
-
+	public pagingAction(int currentPage, int totalCount, int blockCount,int blockPage) {
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
-		this.currentPage = currentPage;
+		this.currentPage = currentPage; // currentPage 넘겨받음 (기본
 		this.totalCount = totalCount;
 
 		// 전체 페이지 수
-		totalPage = (int) Math.ceil((double) totalCount / blockCount);
-		if (totalPage == 0) {
-			totalPage = 1;
-		}
+		totalPage = (int) Math.ceil((double) totalCount / blockCount); // 전체 레코드수를 한페이지에 넣을 게시물수로 나눈 후 반올림
+		if (totalPage == 0) {		totalPage = 1;		}
 
 		// 현재 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정
-		if (currentPage > totalPage) {
-			currentPage = totalPage;
-		}
+		if (currentPage > totalPage) {	currentPage = totalPage;	}
 
 		// 현재 페이지의 처음과 마지막 글의 번호 가져오기.
 		startCount = (currentPage - 1) * blockCount;
@@ -43,9 +35,7 @@ public class pagingAction {
 		endPage = startPage + blockPage - 1;
 
 		// 마지막 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정
-		if (endPage > totalPage) {
-			endPage = totalPage;
-		}
+		if (endPage > totalPage) {		endPage = totalPage;		}
 
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
@@ -60,9 +50,7 @@ public class pagingAction {
 
 		//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
 		for (int i = startPage; i <= endPage; i++) {
-			if (i > totalPage) {
-				break;
-			}
+			if (i > totalPage) {	break;		}
 			if (i == currentPage) {
 				pagingHtml.append("&nbsp;<b> <font color='red'>");
 				pagingHtml.append(i);
@@ -75,7 +63,6 @@ public class pagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
 			}
-
 			pagingHtml.append("&nbsp;");
 		}
 
@@ -90,24 +77,8 @@ public class pagingAction {
 		}
 	}
 
-	public int getCurrentPage() {	return currentPage;	}
-
-	public int getTotalCount() {	return totalCount;	}
-
-	public int getTotalPage() {	return totalPage;	}
-
-	public int getBlockCount() {return blockCount;	}
-
-	public int getBlockPage() {	return blockPage;	}
-
 	public int getStartCount() {	return startCount;	}
-
-
 	public int getEndCount() {	return endCount;	}
-	public int getStartPage() {	return startPage;	}
-
-	public int getEndPage() {	return endPage;	}
-
 	public StringBuffer getPagingHtml() {	return pagingHtml;	}
 
 }

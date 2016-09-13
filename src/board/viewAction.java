@@ -28,7 +28,6 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 	// 상세보기
 	public String execute() throws Exception {
 		System.out.println("viewAction execute()");
-		System.out.println(paramClass.getNo()+"번 글 가져오기");
 		// 해당 글의 조회수 +1.
 		sqlMapper.update("updateReadHit", paramClass);
 		
@@ -39,6 +38,7 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 
 	// 첨부 파일 다운로드
 	public String download() throws Exception {
+		System.out.println("viewAction download()");
 		// 해당 번호의 파일 정보를 가져온다.
 		paramClass = (boardVO) sqlMapper.queryForObject("selectOne",  paramClass.getNo());
 
@@ -57,13 +57,13 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 
 	// 비밀번호 체크 폼
 	public String checkForm() throws Exception {
-		
+		System.out.println("viewAction checkForm()");
 		return SUCCESS;
 	}
 
 	// 비밀번호 체크 액션
 	public String checkAction() throws Exception {
-		System.out.println(paramClass.getNo());
+		System.out.println("viewAction checkAction()");
 		// 현재 글의 비밀번호 가져오기.
 		paramClass = (boardVO) sqlMapper.queryForObject("selectPassword",paramClass);
 
@@ -73,7 +73,7 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 
 		return SUCCESS;
 	}
-	public Object getModel() {	return paramClass; 	}
+	public Object getModel() {	System.out.println("getModel"); return paramClass; 	}
 	public void prepare() throws Exception {	paramClass = new boardVO();	}
 	public void setSqlMapper(SqlMapClient sqlMapper) {		this.sqlMapper=sqlMapper;	}
 	
@@ -85,7 +85,7 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 	
 	public InputStream getInputStream() {	return inputStream;	}
 	public String getFileUploadPath() {	return fileUploadPath;	}
-	public boardVO getParamClass(){	return paramClass;	}
+	public boardVO getParamClass(){	System.out.println("getParamClass");  return paramClass;	}
 	public String getContentDisposition() {	return contentDisposition;	}
 	public long getContentLength() {	return contentLength;	}
 	public int getCurrentPage() {	return currentPage;	}

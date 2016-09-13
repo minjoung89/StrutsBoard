@@ -28,7 +28,7 @@ public class modifyAction extends ActionSupport implements Preparable,ModelDrive
 
 	// 게시글 수정
 	public String execute() throws Exception {
-
+		System.out.println("modifyAction execute()");
 		// 일단 항목만 수정한다.
 		sqlMapper.update("updateBoard", paramClass);
 
@@ -37,7 +37,7 @@ public class modifyAction extends ActionSupport implements Preparable,ModelDrive
 			
 			//실제 서버에 저장될 파일 이름과 확장자 설정.
 			String file_name = "file_" + paramClass.getNo();
-		           String file_ext = uploadFileName.substring(uploadFileName.lastIndexOf('.')+1,uploadFileName.length());
+		    String file_ext = uploadFileName.substring(uploadFileName.lastIndexOf('.')+1,uploadFileName.length());
 			
 			//이전 파일 삭제
 			File deleteFile = new File(fileUploadPath + old_file);
@@ -69,7 +69,7 @@ public class modifyAction extends ActionSupport implements Preparable,ModelDrive
 	public int getCurrentPage() {		return currentPage;	}
 	public void setCurrentPage(int currentPage) {		this.currentPage = currentPage;	}	
 	public void setSqlMapper(SqlMapClient sqlMapper) {		this.sqlMapper=sqlMapper;	}
-	public Object getModel() {		return paramClass;	}
+	public Object getModel() {	System.out.println("getModel"); 	return paramClass;	}
 	public void prepare() throws Exception { paramClass=new boardVO();	}
 }
 

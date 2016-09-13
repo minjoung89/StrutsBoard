@@ -8,9 +8,7 @@ import board.pagingAction;
 public class listAction extends ActionSupport implements DAOSqlMapper{
 	
 	private SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
-
 	private List<boardVO> list;
-	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount; 		// 총 게시물의 수
 	private int blockCount = 10;	// 한 페이지의  게시물의 수
@@ -18,12 +16,11 @@ public class listAction extends ActionSupport implements DAOSqlMapper{
 	private String pagingHtml; 	//페이징을 구현한 HTML
 	private pagingAction page; 	// 페이징 클래스
 	
-
 	// 게시판 LIST 액션
 	public String execute() throws Exception {
-
-		// 모든 글을 가져와 list에 넣는다.
-		list = sqlMapper.queryForList("selectAll");
+		System.out.println("listAction execute()");
+		
+		list = sqlMapper.queryForList("selectAll"); // sqlMapper 내용(boardSQL.xml)에서 id가 selectAll인 sql문 수행
 
 		totalCount = list.size(); // 전체 글 갯수를 구한다.
 		page = new pagingAction(currentPage, totalCount, blockCount, blockPage); // pagingAction 객체 생성.
@@ -41,24 +38,15 @@ public class listAction extends ActionSupport implements DAOSqlMapper{
 
 		return SUCCESS;
 	}
-	
 	public List<boardVO> getList() {	return list;	}
-
 	public int getCurrentPage() {	return currentPage;	}
-
 	public void setCurrentPage(int currentPage) {	this.currentPage = currentPage;	}
-
 	public int getTotalCount() {	return totalCount;	}
-
 	public int getBlockCount() {	return blockCount;	}
-
 	public int getBlockPage() {	return blockPage;	}
-
 	public String getPagingHtml() {	return pagingHtml;	}
-
 	public pagingAction getPage() {	return page;	}
-
-	public void setSqlMapper(SqlMapClient sqlMapper) {	System.out.println(sqlMapper); 	this.sqlMapper=sqlMapper;	}
+	public void setSqlMapper(SqlMapClient sqlMapper) {	this.sqlMapper=sqlMapper;	}
 
 }
 
