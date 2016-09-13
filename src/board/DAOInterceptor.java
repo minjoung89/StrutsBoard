@@ -33,6 +33,5 @@ public class DAOInterceptor implements Interceptor{
 			daoSqlMapper.setSqlMapper(sqlMapper);  //listAction의 setSqlMapper()를 호출 (즉, listAction에 sqlMapper를 빌려줌)
 		}
 		return invocation.invoke();  // 컨트롤러에 연결정보(invocation)을 돌려줌
-	}
-	
+	}	
 }

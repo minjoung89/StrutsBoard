@@ -31,20 +31,20 @@
         		<td height="1" colspan="5"></td>
       	      </tr>
 
-	    <s:iterator value="list" status="stat">    <!-- 반복문(list안의 레코드를 하나씩 꺼냄) -->
+	    <s:iterator value="list" status="stat">
 
-			 <s:url id="viewURL" action="viewAction" >  <!-- viewAction으로 가는 url을 생성함 -->
-				<s:param name="no">					<!-- 파라미터 no 생성하여 현재 레코드의 no값 설정 -->
+			 <s:url id="viewURL" action="viewAction" >
+				<s:param name="no">
 					<s:property value="no" />
 				</s:param>
-				<s:param name="currentPage">		<!-- 파라미터 currentPage 생성하여 listAction에서 넘겨받은 currentPage값 설정 -->
+				<s:param name="currentPage">
 					<s:property value="currentPage" />
 				</s:param>
 		    </s:url>
 			
      	      <tr bgcolor="#FFFFFF"  align="center">
         		<td><s:property value="no" /></td>
-        		<td align="left"> &nbsp;<s:a href="%{viewURL}"><s:property value="subject" /></s:a></td>   <!-- viewURL 내용에 맞게 페이지 이동 -->
+        		<td align="left"> &nbsp;<s:a href="%{viewURL}"><s:property value="subject" /></s:a></td>
         		<td align="center"><s:property value="name" /></td>
 				<td align="center"><s:property value="regdate" /></td>
         		<td><s:property value="readhit" /></td>

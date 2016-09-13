@@ -13,9 +13,7 @@ import java.net.URLEncoder;
 
 public class viewAction extends ActionSupport implements Preparable,ModelDriven,DAOSqlMapper{
 	private SqlMapClient sqlMapper;
-
 	private boardVO paramClass; //파라미터를 저장할 객체
-
 	private int currentPage;
 
 	private String fileUploadPath = "E:\\save\\";
@@ -32,7 +30,7 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 		sqlMapper.update("updateReadHit", paramClass);
 		
 		// 해당 번호의 글을 가져온다.
-		paramClass = (boardVO) sqlMapper.queryForObject("selectOne", paramClass.getNo());
+		paramClass = (boardVO) sqlMapper.queryForObject("selectOne", paramClass.getNo()); 
 		return SUCCESS;
 	}
 
@@ -54,25 +52,7 @@ public class viewAction extends ActionSupport implements Preparable,ModelDriven,
 
 		return SUCCESS;
 	}
-
-	// 비밀번호 체크 폼
-	public String checkForm() throws Exception {
-		System.out.println("viewAction checkForm()");
-		return SUCCESS;
-	}
-
-	// 비밀번호 체크 액션
-	public String checkAction() throws Exception {
-		System.out.println("viewAction checkAction()");
-		// 현재 글의 비밀번호 가져오기.
-		paramClass = (boardVO) sqlMapper.queryForObject("selectPassword",paramClass);
-
-		// 입력한 비밀번호가 틀리면 ERROR 리턴.
-		if (paramClass == null)
-			return ERROR;
-
-		return SUCCESS;
-	}
+	
 	public Object getModel() {	System.out.println("getModel"); return paramClass; 	}
 	public void prepare() throws Exception {	paramClass = new boardVO();	}
 	public void setSqlMapper(SqlMapClient sqlMapper) {		this.sqlMapper=sqlMapper;	}

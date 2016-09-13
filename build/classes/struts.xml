@@ -58,12 +58,12 @@
    		 </action>
 		
 		<!-- 비밀번호 체크 액션. -->
-		<action name="checkForm" class="board.viewAction" method="checkForm">
+		<action name="checkForm" class="board.checkFormAction">
 			<interceptor-ref name="base"/>
 			<result>/board/checkPassword.jsp</result>
 		</action>
 		
-		<action name="checkAction" class="board.viewAction" method="checkAction">
+		<action name="checkAction" class="board.checkAction">
 			<interceptor-ref name="base"/>
 			<result name="error">/board/checkError.jsp</result>
 			<result>/board/checkSuccess.jsp</result>
